@@ -1,5 +1,9 @@
 package org.example.websocketserver.handler;
 
+import org.example.websocketserver.handler.test.HandlerTestMessage;
+import org.example.websocketserver.helper.TransportUtils;
+import org.example.websocketserver.messages.BaseMessage;
+import org.example.websocketserver.messages.MessageType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.WebSocketHandler;
@@ -42,7 +46,15 @@ public class WebSocketHandlerImpl implements WebSocketHandler {
     }
 
     public void handleMessageByType(WebSocketSession session, String payload) {
+        BaseMessage baseMessage = TransportUtils.fromJsonHelper(payload, BaseMessage.class);
 
+        if (baseMessage != null) {
+            MessageType messageType = baseMessage.getMessageType();
+            switch (messageType) {
+                case TEST -> HandlerTestMessage.handleTestMessage(session, payload);
+                default -> logger.info("unknown message type received");
+            }
+        }
     }
 
     @Override
