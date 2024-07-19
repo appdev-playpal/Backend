@@ -20,8 +20,6 @@ public class HandlerTestMessage {
 
         testMessage.setMessageType(MessageType.TEST);
         testMessage.setText("Test");
-        String msgIdentifier = testMessage.getMessageIdentifier();
-        testMessage.setMessageIdentifier(msgIdentifier);
 
         String response = TransportUtils.toJsonHelper(testMessage);
         logger.info("Test-Message changed and send: " + testMessage.getText());

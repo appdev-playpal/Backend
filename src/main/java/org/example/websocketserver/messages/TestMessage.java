@@ -7,7 +7,6 @@ import lombok.EqualsAndHashCode;
 @Data
 public class TestMessage extends BaseMessage{
     private String text;
-    private String messageIdentifier;
 
     public TestMessage(){
         this.messageType = MessageType.TEST;
