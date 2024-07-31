@@ -4,6 +4,7 @@ import org.example.websocketserver.handler.test.HandlerTestMessage;
 import org.example.websocketserver.helper.TransportUtils;
 import org.example.websocketserver.messages.BaseMessage;
 import org.example.websocketserver.messages.MessageType;
+import org.example.websocketserver.repository.InMemoryHobbyRepo;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.WebSocketHandler;
@@ -18,6 +19,7 @@ import java.util.logging.Logger;
 public class WebSocketHandlerImpl implements WebSocketHandler {
 
     private static final List<WebSocketSession> sessions = new CopyOnWriteArrayList<>();
+    private static final InMemoryHobbyRepo hobbyRepo = new InMemoryHobbyRepo();
     private final Logger logger = Logger.getLogger(getClass().getName());
 
     @Override
@@ -52,6 +54,8 @@ public class WebSocketHandlerImpl implements WebSocketHandler {
             MessageType messageType = baseMessage.getMessageType();
             switch (messageType) {
                 case TEST -> HandlerTestMessage.handleTestMessage(session, payload);
+                case HOBBY -> HandlerHobbyMessage.handleHobbyMessage(session, payload, hobbyRepo);
+                case HOBBYLIST -> HandlerHobbyListMessage.handleHobbyListMessage(session, payload, hobbyRepo);
                 default -> logger.info("unknown message type received");
             }
         }
