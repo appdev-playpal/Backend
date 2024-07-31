@@ -55,6 +55,7 @@ public class WebSocketHandlerImpl implements WebSocketHandler {
             switch (messageType) {
                 case TEST -> HandlerTestMessage.handleTestMessage(session, payload);
                 case HOBBY -> HandlerHobbyMessage.handleHobbyMessage(session, payload, hobbyRepo);
+                case HOBBYLIST -> HandlerHobbyListMessage.handleHobbyListMessage(session, payload, hobbyRepo);
                 default -> logger.info("unknown message type received");
             }
         }
