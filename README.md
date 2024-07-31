@@ -63,8 +63,3 @@ Contributions to the backend API are welcome! If you'd like to contribute, pleas
 1. Fork the repository
 2. Make your changes
 3. Submit a pull request
-
-Contact
--------
-
-[Insert contact information]
