@@ -14,20 +14,6 @@ This message handler is responsible for adding a new hobby to the repository.
 
 This message handler is responsible for sending the entire list of hobbies to the client.
 
-API Endpoints
--------------
-
-### Add Hobby
-
-* **Endpoint:** `/addHobby`
-* **Method:** `POST`
-* **Request Body:** `Hobby` object (JSON)
-
-### Get Hobby List
-
-* **Endpoint:** `/getHobbyList`
-* **Method:** `GET`
-
 Message Handlers
 ----------------
 
@@ -53,7 +39,6 @@ To develop and test the backend API, follow these steps:
 1. Clone the repository
 2. Install the required dependencies
 3. Start the backend server
-4. Use a tool like Postman or cURL to test the API endpoints
 
 Contributing
 ------------
